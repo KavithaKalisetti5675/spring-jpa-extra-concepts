@@ -1,7 +1,5 @@
 package com.spring.example2.spring.jpa.repository;
 
-import com.spring.example2.spring.jpa.entity.Course;
-import com.spring.example2.spring.jpa.entity.Passport;
 import com.spring.example2.spring.jpa.entity.Student;
 import org.springframework.stereotype.Repository;
 
@@ -15,21 +13,21 @@ public class StudentRepository {
     @PersistenceContext
     EntityManager entityManager;
 
-    public Student findById(Long id){
+    public Student findById(Long id) {
         Student student = entityManager.find(Student.class, id);
         return student;
     }
 
-    public void insert (Student student){
-        if(student.getId()==null){
-        entityManager.persist(student);
-        }else{
+    public void insert(Student student) {
+        if (student.getId() == null) {
+            entityManager.persist(student);
+        } else {
             entityManager.merge(student);
         }
     }
 
-    public boolean deleteById(Long id){
-        Student student  = findById(id);
+    public boolean deleteById(Long id) {
+        Student student = findById(id);
         entityManager.remove(student);
         return true;
     }
