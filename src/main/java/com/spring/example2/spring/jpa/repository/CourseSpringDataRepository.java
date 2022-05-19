@@ -3,9 +3,10 @@ package com.spring.example2.spring.jpa.repository;
 import com.spring.example2.spring.jpa.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface CourseSpringDataRepository extends JpaRepository<Course,Long> {
     List<Course> findByNameAndId(String name, Long id);
 
